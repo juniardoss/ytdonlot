@@ -1,0 +1,48 @@
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build: .
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    volumes:
+      - downloads:/srv/downloads
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  # Skalakan dengan `docker compose up --scale worker=3`.
+  # Satu worker = satu download bersamaan.
+  worker:
+    build: .
+    command: ["python", "worker.py"]
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      - downloads:/srv/downloads
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  cleaner:
+    build: .
+    command: ["python", "cleanup.py"]
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      - downloads:/srv/downloads
+
+volumes:
+  downloads:

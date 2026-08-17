@@ -1,0 +1,11 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.9.0
+pydantic-settings>=2.5.0
+redis>=5.0.0
+rq>=1.16.0
+
+# Sengaja tidak dipin ke versi persis: extractor rusak tiap kali situs
+# sumber berubah, dan perbaikannya hanya datang lewat rilis baru.
+# Jalankan `pip install -U yt-dlp` secara berkala.
+yt-dlp>=2024.1.1
