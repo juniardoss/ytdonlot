@@ -1,0 +1,115 @@
+:root {
+  --bg: #f6f7f9;
+  --fg: #16181d;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --border: #e3e5ea;
+  --accent: #2563eb;
+  --error: #b91c1c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101216;
+    --fg: #e9eaee;
+    --muted: #9aa1ad;
+    --card: #191c22;
+    --border: #2a2e37;
+    --accent: #5b8cff;
+    --error: #f87171;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2rem 1rem 4rem;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.wrap { max-width: 640px; margin: 0 auto; }
+
+h1 { font-size: 1.6rem; margin: 0 0 .35rem; }
+h2 { font-size: 1.05rem; margin: 0 0 .25rem; }
+
+.sub, .muted { color: var(--muted); font-size: .9rem; margin: 0; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.15rem;
+  margin-top: 1.25rem;
+}
+
+label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 600;
+  margin-bottom: .35rem;
+}
+
+input, select {
+  width: 100%;
+  padding: .6rem .7rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: .95rem;
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+button, .button {
+  display: inline-block;
+  width: 100%;
+  padding: .65rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:disabled { opacity: .55; cursor: not-allowed; }
+
+#preview { display: flex; gap: .9rem; align-items: center; }
+#preview img { width: 120px; border-radius: 8px; flex-shrink: 0; }
+
+.bar {
+  height: 8px;
+  border-radius: 99px;
+  background: var(--border);
+  overflow: hidden;
+  margin: .8rem 0;
+}
+
+#bar-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width .3s ease;
+}
+
+.error {
+  margin-top: 1rem;
+  padding: .75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--error);
+  color: var(--error);
+  font-size: .9rem;
+}
+
+.hidden { display: none !important; }

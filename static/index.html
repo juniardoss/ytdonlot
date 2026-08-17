@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video Downloader</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Video Downloader</h1>
+      <p class="sub">Untuk keperluan pribadi dan tugas kuliah. Unduh hanya konten
+        yang kamu miliki atau yang lisensinya mengizinkan.</p>
+    </header>
+
+    <form id="form" class="card">
+      <label for="url">Tautan video</label>
+      <input id="url" name="url" type="url" placeholder="https://www.youtube.com/watch?v=..." required />
+
+      <label for="preset">Kualitas</label>
+      <select id="preset" name="preset"></select>
+
+      <button id="submit" type="submit">Proses</button>
+    </form>
+
+    <section id="preview" class="card hidden">
+      <img id="thumb" alt="" />
+      <div>
+        <h2 id="preview-title"></h2>
+        <p id="preview-meta" class="muted"></p>
+      </div>
+    </section>
+
+    <section id="status" class="card hidden">
+      <p id="status-text"></p>
+      <div class="bar"><div id="bar-fill"></div></div>
+      <a id="download" class="button hidden" href="#">Simpan file</a>
+    </section>
+
+    <p id="error" class="error hidden"></p>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
